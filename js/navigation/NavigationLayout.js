@@ -9,28 +9,57 @@ import ScheduleScreen from '../screens/Schedule';
 import SessionScreen from '../screens/Session';
 import MapScreen from '../screens/Map';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import { sharedNavigationOptions } from './config';
 
-const AboutStack = createStackNavigator({
-  About: AboutScreen
-});
-const ScheduleStack = createStackNavigator({
-  Schedule: ScheduleScreen,
-  Session: SessionScreen
-});
-const FavesStack = createStackNavigator({
-  Faves: FavesScreen,
-  Session: SessionScreen
-});
-const MapStack = createStackNavigator({
-  Map: MapScreen
-});
+const AboutStack = createStackNavigator(
+  {
+    About: AboutScreen
+  },
+  {
+    defaultNavigationOptions: ({ navigation }) => ({
+      ...sharedNavigationOptions(navigation)
+    })
+  }
+);
+const ScheduleStack = createStackNavigator(
+  {
+    Schedule: ScheduleScreen,
+    Session: SessionScreen
+  },
+  {
+    defaultNavigationOptions: ({ navigation }) => ({
+      ...sharedNavigationOptions(navigation)
+    })
+  }
+);
+const FavesStack = createStackNavigator(
+  {
+    Faves: FavesScreen,
+    Session: SessionScreen
+  },
+  {
+    defaultNavigationOptions: ({ navigation }) => ({
+      ...sharedNavigationOptions(navigation)
+    })
+  }
+);
+const MapStack = createStackNavigator(
+  {
+    Map: MapScreen
+  },
+  {
+    defaultNavigationOptions: ({ navigation }) => ({
+      ...sharedNavigationOptions(navigation)
+    })
+  }
+);
 
 export default createBottomTabNavigator(
   {
-    About: AboutStack,
     Schedule: ScheduleStack,
+    Map: MapStack,
     Faves: FavesStack,
-    Map: MapStack
+    About: AboutStack
   },
   {
     defaultNavigationOptions: ({ navigation }) => ({
@@ -38,7 +67,7 @@ export default createBottomTabNavigator(
         const { routeName } = navigation.state;
         let iconName;
         if (routeName === 'About') {
-          iconName = `ios-calendar`;
+          iconName = `ios-information-circle`;
           // Sometimes we want to add badges to some icons.
           // You can check the implementation below.
         } else if (routeName === 'Map') {
@@ -46,11 +75,9 @@ export default createBottomTabNavigator(
         } else if (routeName === 'Faves') {
           iconName = `ios-heart`;
         } else {
-          // schedule
-          iconName = 'ios-information-circle';
+          // schedule tab
+          iconName = 'ios-calendar';
         }
-
-        // You can return any component that you like here!
         return <Ionicons name={iconName} size={25} color={tintColor} />;
       }
     }),
@@ -58,7 +85,8 @@ export default createBottomTabNavigator(
       activeTintColor: '#fff',
       inactiveTintColor: '#999999',
       labelStyle: {
-        fontSize: 10
+        fontSize: 10,
+        fontFamily: 'Montserrat'
       },
       style: {
         backgroundColor: 'black'
