@@ -23,7 +23,7 @@ export default class AboutContainer extends Component {
           if (loading) return <ActivityIndicator />;
           if (error) return <Text>Error </Text>;
 
-          if (!loading && !error) return <About data={data} />;
+          return <About data={data} />;
         }}
       </Query>
     );

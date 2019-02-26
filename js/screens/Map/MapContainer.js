@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { View, Text, ActivityIndicator } from 'react-native';
 import { Query } from 'react-apollo';
-import Session from './Session';
+import Map from './Map';
 import gql from 'graphql-tag';
 
-export default class FavesContainer extends Component {
+export default class MapContainer extends Component {
   render() {
     return (
       <Query
@@ -23,7 +23,7 @@ export default class FavesContainer extends Component {
           if (loading) return <ActivityIndicator />;
           if (error) return <Text>Error </Text>;
 
-          if (!loading && !error) return <Session data={data} />;
+          if (!loading && !error) return <Map data={data} />;
         }}
       </Query>
     );

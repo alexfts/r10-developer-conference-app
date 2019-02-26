@@ -4,7 +4,7 @@ import { Text, View, FlatList } from 'react-native';
 export default ({ data }) => {
   return (
     <View>
-      <Text>Session</Text>
+      <Text>Map</Text>
     </View>
   );
 };

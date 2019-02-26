@@ -3,12 +3,17 @@ import { StyleSheet, Text, View } from 'react-native';
 import client from './config/api';
 import { ApolloProvider } from 'react-apollo';
 import About from './screens/About';
+import Faves from './screens/Faves';
+import Schedule from './screens/Schedule';
+import Session from './screens/Session';
+import Speaker from './screens/Speaker';
+import AppNavigator from '../js/navigation/RootStackNavigator.js';
 
 export default class App extends Component {
   render() {
     return (
       <ApolloProvider client={client}>
-        <About />
+        <AppNavigator />
       </ApolloProvider>
     );
   }
