@@ -1,20 +1,33 @@
 import React, { Component } from 'react';
-import { Text, View, FlatList, SectionList } from 'react-native';
+import {
+  Text,
+  View,
+  FlatList,
+  SectionList,
+  TouchableHighlight
+} from 'react-native';
 import moment from 'moment';
-export default ({ data }) => {
-  console.log('SCHEDULE', data);
+import { withNavigation } from 'react-navigation';
+
+const Schedule = ({ data, navigation }) => {
   return (
     <View>
       <SectionList
         renderItem={({ item }) => (
-          <View>
+          <TouchableHighlight
+            activeOpacity={75 / 100}
+            underlayColor={'rgb(210,210,210)'}
+            onPress={() => {
+              navigation.navigate('Session', { item });
+            }}
+          >
             <View style={{ paddingLeft: 10 }}>
               <Text style={{ fontSize: 16 }}>{item.title}</Text>
               <Text style={{ fontSize: 14, color: '#999999' }}>
                 {item.location}
               </Text>
             </View>
-          </View>
+          </TouchableHighlight>
         )}
         renderSectionHeader={({ section }) => (
           <View style={{ backgroundColor: '#e6e6e6' }}>
@@ -45,3 +58,5 @@ export default ({ data }) => {
     </View>
   );
 };
+
+export default withNavigation(Schedule);

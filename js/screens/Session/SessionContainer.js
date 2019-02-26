@@ -4,28 +4,9 @@ import { Query } from 'react-apollo';
 import Session from './Session';
 import gql from 'graphql-tag';
 
-export default class FavesContainer extends Component {
+export default class SessionContainer extends Component {
   render() {
-    return (
-      <Query
-        query={gql`
-          {
-            allConducts {
-              id
-              title
-              description
-              order
-            }
-          }
-        `}
-      >
-        {({ loading, error, data }) => {
-          if (loading) return <ActivityIndicator />;
-          if (error) return <Text>Error </Text>;
-
-          if (!loading && !error) return <Session data={data} />;
-        }}
-      </Query>
-    );
+    const { navigation } = this.props;
+    return <Session item={navigation.getParam('item')} />;
   }
 }

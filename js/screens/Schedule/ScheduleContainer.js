@@ -5,6 +5,14 @@ import Schedule from './Schedule';
 import gql from 'graphql-tag';
 import { formatSessionData } from './dataFormatHelpers';
 export default class ScheduleContainer extends Component {
+  static navigationOptions = {
+    title: 'Schedule',
+    headerTintColor: 'white',
+    headerTitleStyle: {
+      fontSize: 14
+    }
+  };
+
   render() {
     return (
       <Query
