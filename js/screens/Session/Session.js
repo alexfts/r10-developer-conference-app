@@ -3,8 +3,8 @@ import { Text, View, TouchableHighlight, Image } from 'react-native';
 import moment from 'moment';
 import { withNavigation } from 'react-navigation';
 
-const Session = ({ item, navigation }) => {
-  const { description, title, speaker, location, startTime } = item;
+const Session = ({ item, navigation, speaker }) => {
+  const { description, title, location, startTime } = item;
   return (
     <View>
       <View style={{ padding: 20, fontFamily: 'Montserrat' }}>

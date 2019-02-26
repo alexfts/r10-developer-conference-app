@@ -25,11 +25,7 @@ export default class ScheduleContainer extends Component {
               startTime
               title
               speaker {
-                bio
                 id
-                image
-                name
-                url
               }
             }
           }

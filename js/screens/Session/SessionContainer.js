@@ -7,6 +7,33 @@ import gql from 'graphql-tag';
 export default class SessionContainer extends Component {
   render() {
     const { navigation } = this.props;
-    return <Session item={navigation.getParam('item')} />;
+    const item = navigation.getParam('item');
+    return (
+      <Query
+        query={gql`
+          query allSpeakers($id: ID) {
+            allSpeakers(filter: { id: $id }) {
+              id
+              bio
+              name
+              image
+            }
+          }
+        `}
+        variables={{ id: item.speaker.id }}
+      >
+        {({ loading, error, data }) => {
+          if (loading) return <ActivityIndicator />;
+          if (error) return <Text>Error </Text>;
+
+          return (
+            <Session
+              item={navigation.getParam('item')}
+              speaker={data.allSpeakers[0]}
+            />
+          );
+        }}
+      </Query>
+    );
   }
 }
