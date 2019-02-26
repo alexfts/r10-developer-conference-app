@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { Text, View, TouchableHighlight, Image } from 'react-native';
 import moment from 'moment';
+import { withNavigation } from 'react-navigation';
 
-export default ({ item }) => {
+const Session = ({ item, navigation }) => {
   const { description, title, speaker, location, startTime } = item;
   return (
     <View>
@@ -16,7 +17,7 @@ export default ({ item }) => {
           activeOpacity={75 / 100}
           underlayColor={'rgb(210,210,210)'}
           onPress={() => {
-            // navigation.navigate('Session', { item });
+            navigation.navigate('Speaker', { speaker });
           }}
         >
           <View>
@@ -32,3 +33,5 @@ export default ({ item }) => {
     </View>
   );
 };
+
+export default withNavigation(Session);

@@ -4,8 +4,9 @@ import { Query } from 'react-apollo';
 import Speaker from './Speaker';
 import gql from 'graphql-tag';
 
-export default class FavesContainer extends Component {
+export default class SpeakerContainer extends Component {
   render() {
+    const { navigation } = this.props;
     return (
       <Query
         query={gql`
@@ -23,7 +24,10 @@ export default class FavesContainer extends Component {
           if (loading) return <ActivityIndicator />;
           if (error) return <Text>Error </Text>;
 
-          if (!loading && !error) return <Speaker data={data} />;
+          if (!loading && !error)
+            return (
+              <Speaker data={data} speaker={navigation.getParam('speaker')} />
+            );
         }}
       </Query>
     );
