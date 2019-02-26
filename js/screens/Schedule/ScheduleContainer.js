@@ -3,18 +3,26 @@ import { View, Text, ActivityIndicator } from 'react-native';
 import { Query } from 'react-apollo';
 import Schedule from './Schedule';
 import gql from 'graphql-tag';
-
-export default class FavesContainer extends Component {
+import { formatSessionData } from './dataFormatHelpers';
+export default class ScheduleContainer extends Component {
   render() {
     return (
       <Query
         query={gql`
           {
-            allConducts {
-              id
-              title
+            allSessions {
               description
-              order
+              id
+              location
+              startTime
+              title
+              speaker {
+                bio
+                id
+                image
+                name
+                url
+              }
             }
           }
         `}
@@ -23,7 +31,8 @@ export default class FavesContainer extends Component {
           if (loading) return <ActivityIndicator />;
           if (error) return <Text>Error </Text>;
 
-          if (!loading && !error) return <Schedule data={data} />;
+          if (!loading && !error)
+            return <Schedule data={formatSessionData(data.allSessions)} />;
         }}
       </Query>
     );
