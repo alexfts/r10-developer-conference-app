@@ -4,7 +4,7 @@ import { withNavigation } from 'react-navigation';
 import Icon from 'react-native-vector-icons/Ionicons';
 import styles from '../../config/styles';
 
-const Speaker = ({ data, navigation, speaker }) => {
+const Speaker = ({ navigation, speaker }) => {
   return (
     <View
       style={{
