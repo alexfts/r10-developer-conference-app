@@ -4,6 +4,8 @@ import { Query } from 'react-apollo';
 import Schedule from './Schedule';
 import gql from 'graphql-tag';
 import { formatSessionData } from './dataFormatHelpers';
+import FavouritesContext from '../../context';
+
 export default class ScheduleContainer extends Component {
   static navigationOptions = {
     title: 'Schedule',
@@ -36,8 +38,20 @@ export default class ScheduleContainer extends Component {
           if (loading) return <ActivityIndicator />;
           if (error) return <Text>Error </Text>;
 
-          if (!loading && !error)
-            return <Schedule data={formatSessionData(data.allSessions)} />;
+          return (
+            <FavouritesContext.Consumer>
+              {({ faveIds, removeFave, saveFave }) => {
+                return (
+                  <Schedule
+                    data={formatSessionData(data.allSessions)}
+                    faveIds={faveIds}
+                    removeFave={removeFave}
+                    saveFave={saveFave}
+                  />
+                );
+              }}
+            </FavouritesContext.Consumer>
+          );
         }}
       </Query>
     );

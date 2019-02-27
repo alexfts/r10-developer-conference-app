@@ -10,7 +10,7 @@ import moment from 'moment';
 import { withNavigation } from 'react-navigation';
 import styles from '../../config/styles';
 
-const Schedule = ({ data, navigation }) => {
+const Schedule = ({ data, navigation, faveIds, saveFave, removeFave }) => {
   return (
     <View styles={styles.Container}>
       <SectionList

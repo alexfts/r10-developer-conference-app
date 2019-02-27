@@ -3,6 +3,7 @@ import { View, Text, ActivityIndicator } from 'react-native';
 import { Query } from 'react-apollo';
 import Session from './Session';
 import gql from 'graphql-tag';
+import FavouritesContext from '../../context';
 
 export default class SessionContainer extends Component {
   static navigationOptions = {
@@ -36,10 +37,19 @@ export default class SessionContainer extends Component {
           if (error) return <Text>Error </Text>;
 
           return (
-            <Session
-              item={navigation.getParam('item')}
-              speaker={data.allSpeakers[0]}
-            />
+            <FavouritesContext.Consumer>
+              {({ faveIds, removeFave, saveFave }) => {
+                return (
+                  <Session
+                    item={navigation.getParam('item')}
+                    speaker={data.allSpeakers[0]}
+                    faveIds={faveIds}
+                    removeFave={removeFave}
+                    saveFave={saveFave}
+                  />
+                );
+              }}
+            </FavouritesContext.Consumer>
           );
         }}
       </Query>

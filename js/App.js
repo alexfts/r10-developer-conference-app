@@ -8,12 +8,14 @@ import Schedule from './screens/Schedule';
 import Session from './screens/Session';
 import Speaker from './screens/Speaker';
 import AppNavigator from '../js/navigation/RootStackNavigator.js';
-
+import { FavouritesProvider } from './context';
 export default class App extends Component {
   render() {
     return (
       <ApolloProvider client={client}>
-        <AppNavigator />
+        <FavouritesProvider>
+          <AppNavigator />
+        </FavouritesProvider>
       </ApolloProvider>
     );
   }

@@ -3,6 +3,7 @@ import { View, Text, ActivityIndicator } from 'react-native';
 import { Query } from 'react-apollo';
 import Faves from './Faves';
 import gql from 'graphql-tag';
+import FavouritesContext from '../../context';
 
 export default class FavesContainer extends Component {
   render() {
@@ -23,7 +24,20 @@ export default class FavesContainer extends Component {
           if (loading) return <ActivityIndicator />;
           if (error) return <Text>Error </Text>;
 
-          if (!loading && !error) return <Faves data={data} />;
+          return (
+            <FavouritesContext.Consumer>
+              {({ faveIds, removeFave, saveFave }) => {
+                return (
+                  <Faves
+                    data={data}
+                    faveIds={faveIds}
+                    removeFave={removeFave}
+                    saveFave={saveFave}
+                  />
+                );
+              }}
+            </FavouritesContext.Consumer>
+          );
         }}
       </Query>
     );

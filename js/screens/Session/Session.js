@@ -1,10 +1,17 @@
 import React, { Component } from 'react';
-import { Text, View, TouchableHighlight, Image } from 'react-native';
+import { Text, View, TouchableHighlight, Image, Button } from 'react-native';
 import moment from 'moment';
 import { withNavigation } from 'react-navigation';
 import styles, { Colors } from '../../config/styles';
-const Session = ({ item, navigation, speaker }) => {
-  const { description, title, location, startTime } = item;
+const Session = ({
+  item,
+  navigation,
+  speaker,
+  faveIds,
+  removeFave,
+  saveFave
+}) => {
+  const { description, title, location, startTime, id } = item;
   return (
     <View>
       <View style={{ padding: 20, fontFamily: 'Montserrat' }}>
@@ -69,6 +76,18 @@ const Session = ({ item, navigation, speaker }) => {
             </Text>
           </View>
         </TouchableHighlight>
+        <Button
+          onPress={() => {
+            if (faveIds.includes(id)) {
+              removeFave(id);
+            } else {
+              saveFave(id);
+            }
+          }}
+          title={faveIds.includes(id) ? 'Remove from faves' : 'Add to faves'}
+          color="#841584"
+          accessibilityLabel="Learn more about this purple button"
+        />
       </View>
     </View>
   );
