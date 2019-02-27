@@ -86,7 +86,7 @@ const Session = ({
           }}
           title={faveIds.includes(id) ? 'Remove from faves' : 'Add to faves'}
           color="#841584"
-          accessibilityLabel="Learn more about this purple button"
+          accessibilityLabel="Add to faves"
         />
       </View>
     </View>

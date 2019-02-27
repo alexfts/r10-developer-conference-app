@@ -30,7 +30,7 @@ export default class SessionContainer extends Component {
             }
           }
         `}
-        variables={{ id: item.speaker.id }}
+        variables={{ id: item.speaker ? item.speaker.id : null }}
       >
         {({ loading, error, data }) => {
           if (loading) return <ActivityIndicator />;

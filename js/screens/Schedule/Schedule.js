@@ -9,6 +9,7 @@ import {
 import moment from 'moment';
 import { withNavigation } from 'react-navigation';
 import styles from '../../config/styles';
+import Icon from 'react-native-vector-icons/Ionicons';
 
 const Schedule = ({ data, navigation, faveIds, saveFave, removeFave }) => {
   return (
@@ -32,17 +33,27 @@ const Schedule = ({ data, navigation, faveIds, saveFave, removeFave }) => {
               >
                 {item.title}
               </Text>
-              <Text
+              <View
                 style={{
-                  fontSize: 14,
-                  color: '#999999',
-                  fontFamily: 'Montserrat-Light',
-                  marginTop: 10,
-                  marginBottom: 10
+                  flexDirection: 'row',
+                  justifyContent: 'space-between'
                 }}
               >
-                {item.location}
-              </Text>
+                <Text
+                  style={{
+                    fontSize: 14,
+                    color: '#999999',
+                    fontFamily: 'Montserrat-Light',
+                    marginTop: 10,
+                    marginBottom: 10
+                  }}
+                >
+                  {item.location}
+                </Text>
+                {item.id && faveIds.includes(item.id) && (
+                  <Icon name="ios-heart" size={15} color="red" />
+                )}
+              </View>
             </View>
           </TouchableHighlight>
         )}
