@@ -9,7 +9,7 @@ export default class AboutContainer extends Component {
     title: 'About',
     headerTintColor: 'white',
     headerTitleStyle: {
-      fontSize: 28,
+      fontSize: 24,
       fontFamily: 'Montserrat'
     }
   };

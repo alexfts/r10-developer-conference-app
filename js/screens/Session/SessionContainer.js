@@ -5,6 +5,15 @@ import Session from './Session';
 import gql from 'graphql-tag';
 
 export default class SessionContainer extends Component {
+  static navigationOptions = {
+    title: 'Session',
+    headerTintColor: 'white',
+    headerTitleStyle: {
+      fontSize: 24,
+      fontFamily: 'Montserrat'
+    }
+  };
+
   render() {
     const { navigation } = this.props;
     const item = navigation.getParam('item');
