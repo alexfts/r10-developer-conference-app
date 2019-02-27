@@ -9,7 +9,8 @@ export default class ScheduleContainer extends Component {
     title: 'Schedule',
     headerTintColor: 'white',
     headerTitleStyle: {
-      fontSize: 14
+      fontSize: 28,
+      fontFamily: 'Montserrat'
     }
   };
 

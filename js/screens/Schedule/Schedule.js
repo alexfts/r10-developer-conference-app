@@ -8,10 +8,11 @@ import {
 } from 'react-native';
 import moment from 'moment';
 import { withNavigation } from 'react-navigation';
+import styles from '../../config/styles';
 
 const Schedule = ({ data, navigation }) => {
   return (
-    <View>
+    <View styles={styles.Container}>
       <SectionList
         renderItem={({ item }) => (
           <TouchableHighlight
@@ -21,9 +22,25 @@ const Schedule = ({ data, navigation }) => {
               navigation.navigate('Session', { item });
             }}
           >
-            <View style={{ paddingLeft: 10 }}>
-              <Text style={{ fontSize: 16 }}>{item.title}</Text>
-              <Text style={{ fontSize: 14, color: '#999999' }}>
+            <View style={{ paddingLeft: 15 }}>
+              <Text
+                style={{
+                  fontSize: 16,
+                  fontFamily: 'Montserrat-Regular',
+                  marginTop: 16
+                }}
+              >
+                {item.title}
+              </Text>
+              <Text
+                style={{
+                  fontSize: 14,
+                  color: '#999999',
+                  fontFamily: 'Montserrat-Light',
+                  marginTop: 10,
+                  marginBottom: 10
+                }}
+              >
                 {item.location}
               </Text>
             </View>
@@ -36,10 +53,10 @@ const Schedule = ({ data, navigation }) => {
                 fontSize: 16,
                 fontFamily: 'Montserrat',
                 padding: 5,
-                paddingLeft: 10
+                paddingLeft: 15
               }}
             >
-              {moment(section.title).format('h:mm a')}
+              {moment(section.title).format('h:mm A')}
             </Text>
           </View>
         )}
