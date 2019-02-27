@@ -1,7 +1,16 @@
 import React, { Component } from 'react';
-import { Text, View, TouchableHighlight, Image, Button } from 'react-native';
+import {
+  Text,
+  View,
+  TouchableHighlight,
+  TouchableOpacity,
+  Image,
+  StyleSheet
+} from 'react-native';
 import moment from 'moment';
+import LinearGradient from 'react-native-linear-gradient';
 import { withNavigation } from 'react-navigation';
+import Icon from 'react-native-vector-icons/Ionicons';
 import styles, { Colors } from '../../config/styles';
 const Session = ({
   item,
@@ -15,15 +24,32 @@ const Session = ({
   return (
     <View>
       <View style={{ padding: 20, fontFamily: 'Montserrat' }}>
-        <Text
+        <View
           style={{
-            fontSize: 18,
-            color: '#999999',
-            fontFamily: 'Montserrat-Light'
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+            alignItems: 'center'
           }}
         >
-          {location}
-        </Text>
+          <Text
+            style={{
+              fontSize: 18,
+              color: '#999999',
+              fontFamily: 'Montserrat-Light'
+            }}
+          >
+            {location}
+          </Text>
+          {id && faveIds.includes(id) && (
+            <Icon
+              name="ios-heart"
+              size={15}
+              color={Colors.red}
+              style={{ padding: 10 }}
+            />
+          )}
+        </View>
+
         <Text style={styles.Heading}>{title}</Text>
         <Text
           style={{
@@ -76,18 +102,49 @@ const Session = ({
             </Text>
           </View>
         </TouchableHighlight>
-        <Button
-          onPress={() => {
-            if (faveIds.includes(id)) {
-              removeFave(id);
-            } else {
-              saveFave(id);
-            }
+        <View
+          style={{
+            width: '100%',
+            alignItems: 'center',
+            justifyContent: 'center'
           }}
-          title={faveIds.includes(id) ? 'Remove from faves' : 'Add to faves'}
-          color="#841584"
-          accessibilityLabel="Add to faves"
-        />
+        >
+          <TouchableOpacity
+            style={{ alignItems: 'center', justifyContent: 'center' }}
+            onPress={() => {
+              if (faveIds.includes(id)) {
+                removeFave(id);
+              } else {
+                saveFave(id);
+              }
+            }}
+          >
+            <LinearGradient
+              colors={[Colors.purple, Colors.blue]}
+              start={{ x: 0.0, y: 1.0 }}
+              end={{ x: 1.0, y: 0.0 }}
+              style={{
+                borderRadius: 50,
+                width: '60%',
+                alignItems: 'center',
+                justifyContent: 'center'
+              }}
+            >
+              <Text
+                style={{
+                  fontFamily: 'Montserrat-Regular',
+                  width: '60%',
+                  fontSize: 18,
+                  color: 'white',
+                  justifyContent: 'center',
+                  alignItems: 'center'
+                }}
+              >
+                {faveIds.includes(id) ? 'Remove from Faves' : 'Add to Faves'}
+              </Text>
+            </LinearGradient>
+          </TouchableOpacity>
+        </View>
       </View>
     </View>
   );

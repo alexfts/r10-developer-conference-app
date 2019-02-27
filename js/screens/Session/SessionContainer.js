@@ -27,6 +27,7 @@ export default class SessionContainer extends Component {
               bio
               name
               image
+              url
             }
           }
         `}
