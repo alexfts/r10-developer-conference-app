@@ -5,13 +5,15 @@ import {
   TouchableHighlight,
   TouchableOpacity,
   Image,
-  StyleSheet
+  StyleSheet,
+  Platform
 } from 'react-native';
 import moment from 'moment';
 import LinearGradient from 'react-native-linear-gradient';
 import { withNavigation } from 'react-navigation';
 import Icon from 'react-native-vector-icons/Ionicons';
 import styles, { Colors } from '../../config/styles';
+import { Fonts } from '../../config/styles';
 const Session = ({
   item,
   navigation,
@@ -23,7 +25,7 @@ const Session = ({
   const { description, title, location, startTime, id } = item;
   return (
     <View>
-      <View style={{ padding: 20, fontFamily: 'Montserrat' }}>
+      <View style={{ padding: 20, fontFamily: Fonts.regular }}>
         <View
           style={{
             flexDirection: 'row',
@@ -35,14 +37,17 @@ const Session = ({
             style={{
               fontSize: 18,
               color: '#999999',
-              fontFamily: 'Montserrat-Light'
+              fontFamily: Fonts.light
             }}
           >
             {location}
           </Text>
           {id && faveIds.includes(id) && (
             <Icon
-              name="ios-heart"
+              name={Platform.select({
+                ios: 'ios-heart',
+                android: 'md-heart'
+              })}
               size={15}
               color={Colors.red}
               style={{ padding: 10 }}
@@ -54,7 +59,7 @@ const Session = ({
         <Text
           style={{
             fontSize: 18,
-            fontFamily: 'Montserrat-Regular',
+            fontFamily: Fonts.regular,
             color: Colors.red
           }}
         >
@@ -69,7 +74,7 @@ const Session = ({
         <Text
           style={{
             fontSize: 16,
-            fontFamily: 'Montserrat-Regular',
+            fontFamily: Fonts.regular,
             color: Colors.mgrey
           }}
         >
@@ -95,9 +100,7 @@ const Session = ({
               source={{ uri: speaker.image }}
               borderRadius={35}
             />
-            <Text
-              style={{ ...styles.Paragraph, fontFamily: 'Montserrat-Regular' }}
-            >
+            <Text style={{ ...styles.Paragraph, fontFamily: Fonts.regular }}>
               {speaker.name}
             </Text>
           </View>

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, ActivityIndicator, Linking } from 'react-native';
+import { View, Text, ActivityIndicator, Linking, Platform } from 'react-native';
 import { Query } from 'react-apollo';
 import Session from './Session';
 import gql from 'graphql-tag';

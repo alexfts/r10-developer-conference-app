@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {
   Text,
+  Platform,
   View,
   FlatList,
   SectionList,
@@ -8,8 +9,10 @@ import {
 } from 'react-native';
 import moment from 'moment';
 import { withNavigation } from 'react-navigation';
-import styles, { Colors } from '../../config/styles';
+import { Colors } from '../../config/styles';
 import Icon from 'react-native-vector-icons/Ionicons';
+import styles from './styles';
+import { Fonts } from '../../config/styles';
 
 const Events = ({ data, navigation, faveIds, saveFave, removeFave }) => {
   return (
@@ -26,7 +29,7 @@ const Events = ({ data, navigation, faveIds, saveFave, removeFave }) => {
             <Text
               style={{
                 fontSize: 16,
-                fontFamily: 'Montserrat-Regular',
+                fontFamily: Fonts.regular,
                 marginTop: 16
               }}
             >
@@ -52,10 +55,13 @@ const Events = ({ data, navigation, faveIds, saveFave, removeFave }) => {
               </Text>
               {item.id && faveIds.includes(item.id) && (
                 <Icon
-                  name="ios-heart"
+                  style={styles.heart}
+                  name={Platform.select({
+                    ios: 'ios-heart',
+                    android: 'md-heart'
+                  })}
                   size={15}
                   color={Colors.red}
-                  style={{ padding: 10 }}
                 />
               )}
             </View>
@@ -67,7 +73,7 @@ const Events = ({ data, navigation, faveIds, saveFave, removeFave }) => {
           <Text
             style={{
               fontSize: 16,
-              fontFamily: 'Montserrat',
+              fontFamily: Fonts.regular,
               padding: 5,
               paddingLeft: 15
             }}

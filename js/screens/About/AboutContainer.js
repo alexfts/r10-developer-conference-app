@@ -3,6 +3,7 @@ import { View, Text, ActivityIndicator } from 'react-native';
 import { Query } from 'react-apollo';
 import About from './About';
 import gql from 'graphql-tag';
+import { Fonts } from '../../config/styles';
 
 export default class AboutContainer extends Component {
   static navigationOptions = {
@@ -10,7 +11,7 @@ export default class AboutContainer extends Component {
     headerTintColor: 'white',
     headerTitleStyle: {
       fontSize: 24,
-      fontFamily: 'Montserrat'
+      fontFamily: Fonts.regular
     }
   };
 

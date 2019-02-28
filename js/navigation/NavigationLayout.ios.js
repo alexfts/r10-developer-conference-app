@@ -10,6 +10,7 @@ import SessionScreen from '../screens/Session';
 import MapScreen from '../screens/Map';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { sharedNavigationOptions } from './config';
+import { Fonts } from '../config/styles';
 
 const AboutStack = createStackNavigator(
   {
@@ -68,14 +69,11 @@ export default createBottomTabNavigator(
         let iconName;
         if (routeName === 'About') {
           iconName = `ios-information-circle`;
-          // Sometimes we want to add badges to some icons.
-          // You can check the implementation below.
         } else if (routeName === 'Map') {
           iconName = `ios-map`;
         } else if (routeName === 'Faves') {
           iconName = `ios-heart`;
         } else {
-          // schedule tab
           iconName = 'ios-calendar';
         }
         return <Ionicons name={iconName} size={25} color={tintColor} />;
@@ -86,7 +84,7 @@ export default createBottomTabNavigator(
       inactiveTintColor: '#999999',
       labelStyle: {
         fontSize: 10,
-        fontFamily: 'Montserrat'
+        fontFamily: Fonts.regular
       },
       style: {
         backgroundColor: 'black'

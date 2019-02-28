@@ -1,3 +1,5 @@
+import { Platform, StyleSheet } from 'react-native';
+
 export const Colors = {
   mgrey: '#999999',
   lgrey: '#e6e6e6',
@@ -8,7 +10,14 @@ export const Colors = {
 
 export const Fonts = {
   light: 'Montserrat-Light',
-  regular: 'Montserrat-Regular'
+  ...Platform.select({
+    ios: {
+      regular: 'Montserrat'
+    },
+    android: {
+      regular: 'Montserrat-Regular'
+    }
+  })
 };
 
 export const Heading = {

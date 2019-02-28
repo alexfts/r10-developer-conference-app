@@ -5,14 +5,14 @@ import Schedule from './Schedule';
 import gql from 'graphql-tag';
 import { formatSessionData } from './dataFormatHelpers';
 import FavouritesContext from '../../context';
-
+import { Fonts } from '../../config/styles';
 export default class ScheduleContainer extends Component {
   static navigationOptions = {
     title: 'Schedule',
     headerTintColor: 'white',
     headerTitleStyle: {
       fontSize: 24,
-      fontFamily: 'Montserrat'
+      fontFamily: Fonts.regular
     }
   };
 
