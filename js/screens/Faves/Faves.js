@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import { Text, View, FlatList } from 'react-native';
 import styles from '../../config/styles';
+import Events from '../../components/Events';
 
-export default ({ data, faveIds, removeFave, saveFave }) => {
+export default props => {
   return (
     <View styles={styles.Container}>
-      <Text>Faves</Text>
+      <Events {...props} />
     </View>
   );
 };

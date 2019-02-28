@@ -34,18 +34,18 @@ export default class FavesContainer extends Component {
               if (error) return <Text>Error </Text>;
 
               return (
-                <Schedule
+                // <Schedule
+                //   data={formatSessionData(data.allSessions)}
+                //   faveIds={faveIds}
+                //   removeFave={removeFave}
+                //   saveFave={saveFave}
+                // />
+                <Faves
                   data={formatSessionData(data.allSessions)}
                   faveIds={faveIds}
                   removeFave={removeFave}
                   saveFave={saveFave}
                 />
-                // <Faves
-                //   data={data}
-                //   faveIds={faveIds}
-                //   removeFave={removeFave}
-                //   saveFave={saveFave}
-                // />
               );
             }}
           </Query>
