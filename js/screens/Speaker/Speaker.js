@@ -32,11 +32,12 @@ const Speaker = ({ navigation, speaker }) => {
           width: '100%',
           paddingLeft: 20,
           paddingRight: 20,
+          paddingTop: 20,
           textAlign: 'center'
         }}
       >
         <TouchableHighlight
-          style={{ color: 'white', alignSelf: 'flex-start' }}
+          style={{ alignSelf: 'flex-start' }}
           onPress={() => {
             navigation.goBack();
           }}
@@ -54,7 +55,7 @@ const Speaker = ({ navigation, speaker }) => {
       <View
         style={{
           width: '90%',
-          height: '80%',
+          height: '85%',
           backgroundColor: 'white',
           alignItems: 'center',
           borderRadius: 10
@@ -90,7 +91,8 @@ const Speaker = ({ navigation, speaker }) => {
                 width: '70%',
                 height: 45,
                 alignItems: 'center',
-                justifyContent: 'center'
+                justifyContent: 'center',
+                marginBottom: 15
               }}
             >
               <Text

@@ -20,7 +20,6 @@ class About extends Component {
           <Image
             source={require('../../assets/images/r10_logo.png')}
             style={{
-              height: 60,
               overflow: 'visible',
               marginBottom: 25,
               marginTop: 25
