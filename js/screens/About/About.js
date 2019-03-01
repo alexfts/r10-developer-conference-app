@@ -26,9 +26,10 @@ class About extends Component {
           />
           <View
             style={{
-              borderStyle: 'solid',
-              borderWidth: 0.5,
-              backgroundColor: '#e6e6e6'
+              height: 1,
+              backgroundColor: '#e6e6e6',
+              marginVertical: 10,
+              width: '90%'
             }}
           />
           <View style={{ width: '100%' }}>
