@@ -6,8 +6,22 @@ import gql from 'graphql-tag';
 import FavouritesContext from '../../context';
 import Schedule from '../Schedule/Schedule';
 import { formatSessionData } from '../Schedule/dataFormatHelpers';
-
+import { Fonts } from '../../config/styles';
 export default class FavesContainer extends Component {
+  static navigationOptions = {
+    title: 'Faves',
+    headerTintColor: 'white',
+    headerTitleStyle: {
+      fontSize: 24,
+      fontFamily: Fonts.regular
+    },
+    headerTitleContainerStyle: {
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center'
+    }
+  };
+
   render() {
     return (
       <FavouritesContext.Consumer>

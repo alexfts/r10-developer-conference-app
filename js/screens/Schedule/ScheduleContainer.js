@@ -13,6 +13,11 @@ export default class ScheduleContainer extends Component {
     headerTitleStyle: {
       fontSize: 24,
       fontFamily: Fonts.regular
+    },
+    headerTitleContainerStyle: {
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center'
     }
   };
 

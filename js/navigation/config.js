@@ -16,13 +16,14 @@ class GradientHeader extends Component {
         />
         {Platform.OS === 'android' && (
           <TouchableHighlight
+            style={{ paddingLeft: 10, paddingTop: 10 }}
             activeOpacity={75 / 100}
             underlayColor={'rgb(210,210,210)'}
             onPress={() => {
               this.props.navigation.toggleDrawer();
             }}
           >
-            <Icon name="md-menu" size={40} />
+            <Icon name="md-menu" size={40} color="white" />
           </TouchableHighlight>
         )}
         <Header {...this.props} />

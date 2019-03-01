@@ -12,6 +12,11 @@ export default class SessionContainer extends Component {
     headerTitleStyle: {
       fontSize: 24,
       fontFamily: 'Montserrat'
+    },
+    headerTitleContainerStyle: {
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center'
     }
   };
 

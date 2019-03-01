@@ -12,6 +12,11 @@ export default class AboutContainer extends Component {
     headerTitleStyle: {
       fontSize: 24,
       fontFamily: Fonts.regular
+    },
+    headerTitleContainerStyle: {
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center'
     }
   };
 

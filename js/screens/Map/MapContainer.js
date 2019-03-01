@@ -3,8 +3,23 @@ import { View, Text, ActivityIndicator } from 'react-native';
 import { Query } from 'react-apollo';
 import Map from './Map';
 import gql from 'graphql-tag';
+import { Fonts } from '../../config/styles';
 
 export default class MapContainer extends Component {
+  static navigationOptions = {
+    title: 'Map',
+    headerTintColor: 'white',
+    headerTitleStyle: {
+      fontSize: 24,
+      fontFamily: Fonts.regular
+    },
+    headerTitleContainerStyle: {
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center'
+    }
+  };
+
   render() {
     return (
       <Query
