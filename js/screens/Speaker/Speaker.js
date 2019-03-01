@@ -55,7 +55,11 @@ const Speaker = ({ navigation, speaker }) => {
           {speaker.bio}
         </Text>
         <TouchableOpacity
-          style={{ alignItems: 'center', justifyContent: 'center' }}
+          style={{
+            width: '100%',
+            alignItems: 'center',
+            justifyContent: 'center'
+          }}
           onPress={() => Linking.openURL(speaker.url)}
         >
           <LinearGradient
@@ -64,8 +68,8 @@ const Speaker = ({ navigation, speaker }) => {
             end={{ x: 1.0, y: 0.0 }}
             style={{
               borderRadius: 50,
-              width: '60%',
-              height: 40,
+              width: '70%',
+              height: 45,
               alignItems: 'center',
               justifyContent: 'center'
             }}
@@ -73,9 +77,6 @@ const Speaker = ({ navigation, speaker }) => {
             <Text
               style={{
                 fontFamily: 'Montserrat-Regular',
-                width: '60%',
-                paddingLeft: 15,
-                paddingRight: 15,
                 fontSize: 18,
                 color: 'white',
                 justifyContent: 'center',

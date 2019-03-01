@@ -113,7 +113,11 @@ const Session = ({
           }}
         >
           <TouchableOpacity
-            style={{ alignItems: 'center', justifyContent: 'center' }}
+            style={{
+              width: '100%',
+              alignItems: 'center',
+              justifyContent: 'center'
+            }}
             onPress={() => {
               if (faveIds.includes(id)) {
                 removeFave(id);
@@ -128,7 +132,8 @@ const Session = ({
               end={{ x: 1.0, y: 0.0 }}
               style={{
                 borderRadius: 50,
-                width: '60%',
+                width: '70%',
+                height: 45,
                 alignItems: 'center',
                 justifyContent: 'center'
               }}
@@ -136,7 +141,6 @@ const Session = ({
               <Text
                 style={{
                   fontFamily: 'Montserrat-Regular',
-                  width: '60%',
                   fontSize: 18,
                   color: 'white',
                   justifyContent: 'center',

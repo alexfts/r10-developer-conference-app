@@ -7,7 +7,7 @@ import {
   TouchableOpacity,
   LayoutAnimation
 } from 'react-native';
-import styles, { Colors } from '../../config/styles';
+import styles, { Colors, Fonts } from '../../config/styles';
 
 class Collapsible extends Component {
   constructor(props) {
@@ -27,15 +27,18 @@ class Collapsible extends Component {
     return (
       <View>
         <TouchableOpacity onPress={this.handleToggleItem}>
-          <Text style={{ ...styles.Paragraph, color: Colors.purple }}>
+          <Text
+            style={{
+              ...styles.Paragraph,
+              fontFamily: Fonts.regular,
+              color: Colors.purple
+            }}
+          >
             {`${this.state.opened ? '-' : '+'} ${item.title}`}
           </Text>
         </TouchableOpacity>
         {this.state.opened && (
-          <Text style={styles.Paragraph}>
-            {item.description}
-            {item.order}
-          </Text>
+          <Text style={styles.Paragraph}>{item.description}</Text>
         )}
       </View>
     );
