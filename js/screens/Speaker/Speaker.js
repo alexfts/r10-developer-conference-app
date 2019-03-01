@@ -6,11 +6,12 @@ import {
   TouchableHighlight,
   Image,
   TouchableOpacity,
-  Linking
+  Linking,
+  ScrollView
 } from 'react-native';
 import { withNavigation } from 'react-navigation';
 import Icon from 'react-native-vector-icons/Ionicons';
-import styles, { Colors } from '../../config/styles';
+import styles, { Colors, Fonts } from '../../config/styles';
 import LinearGradient from 'react-native-linear-gradient';
 
 const Speaker = ({ navigation, speaker }) => {
@@ -23,17 +24,33 @@ const Speaker = ({ navigation, speaker }) => {
         height: '100%'
       }}
     >
-      <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+      <View
+        style={{
+          flexDirection: 'row',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          width: '100%',
+          paddingLeft: 20,
+          paddingRight: 20,
+          textAlign: 'center'
+        }}
+      >
         <TouchableHighlight
-          style={{ color: 'white' }}
+          style={{ color: 'white', alignSelf: 'flex-start' }}
           onPress={() => {
             navigation.goBack();
           }}
         >
           <Icon name="ios-close" size={50} color="white" />
         </TouchableHighlight>
-        <Text style={{ color: 'white' }}>About the Speaker</Text>
+        <Text
+          style={{ color: 'white', fontFamily: Fonts.regular, fontSize: 18 }}
+        >
+          About the Speaker
+        </Text>
+        <View />
       </View>
+
       <View
         style={{
           width: '90%',
@@ -43,50 +60,53 @@ const Speaker = ({ navigation, speaker }) => {
           borderRadius: 10
         }}
       >
-        <Image
-          style={{ width: 100, height: 100, marginTop: 20 }}
-          source={{ uri: speaker.image }}
-          borderRadius={50}
-        />
-        <Text style={styles.Heading}>{speaker.name}</Text>
-        <Text
-          style={{ ...styles.Paragraph, paddingLeft: 20, paddingRight: 20 }}
-        >
-          {speaker.bio}
-        </Text>
-        <TouchableOpacity
-          style={{
-            width: '100%',
-            alignItems: 'center',
-            justifyContent: 'center'
-          }}
-          onPress={() => Linking.openURL(speaker.url)}
-        >
-          <LinearGradient
-            colors={[Colors.purple, Colors.blue]}
-            start={{ x: 0.0, y: 1.0 }}
-            end={{ x: 1.0, y: 0.0 }}
-            style={{
-              borderRadius: 50,
-              width: '70%',
-              height: 45,
-              alignItems: 'center',
-              justifyContent: 'center'
-            }}
+        <ScrollView contentContainerStyle={{ alignItems: 'center' }}>
+          <Image
+            style={{ width: 100, height: 100, marginTop: 20 }}
+            source={{ uri: speaker.image }}
+            borderRadius={50}
+          />
+          <Text style={styles.Heading}>{speaker.name}</Text>
+          <Text
+            style={{ ...styles.Paragraph, paddingLeft: 20, paddingRight: 20 }}
           >
-            <Text
+            {speaker.bio}
+          </Text>
+          <TouchableOpacity
+            style={{
+              width: '100%',
+              alignItems: 'center',
+              justifyContent: 'center',
+              marginTop: 15
+            }}
+            onPress={() => Linking.openURL(speaker.url)}
+          >
+            <LinearGradient
+              colors={[Colors.purple, Colors.blue]}
+              start={{ x: 0.0, y: 1.0 }}
+              end={{ x: 1.0, y: 0.0 }}
               style={{
-                fontFamily: 'Montserrat-Regular',
-                fontSize: 18,
-                color: 'white',
-                justifyContent: 'center',
-                alignItems: 'center'
+                borderRadius: 50,
+                width: '70%',
+                height: 45,
+                alignItems: 'center',
+                justifyContent: 'center'
               }}
             >
-              Read More on Wikipedia
-            </Text>
-          </LinearGradient>
-        </TouchableOpacity>
+              <Text
+                style={{
+                  fontFamily: 'Montserrat-Regular',
+                  fontSize: 18,
+                  color: 'white',
+                  justifyContent: 'center',
+                  alignItems: 'center'
+                }}
+              >
+                Read More on Wikipedia
+              </Text>
+            </LinearGradient>
+          </TouchableOpacity>
+        </ScrollView>
       </View>
     </View>
   );

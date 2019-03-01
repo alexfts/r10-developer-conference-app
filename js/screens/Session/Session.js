@@ -6,7 +6,8 @@ import {
   TouchableOpacity,
   Image,
   StyleSheet,
-  Platform
+  Platform,
+  ScrollView
 } from 'react-native';
 import moment from 'moment';
 import LinearGradient from 'react-native-linear-gradient';
@@ -14,6 +15,7 @@ import { withNavigation } from 'react-navigation';
 import Icon from 'react-native-vector-icons/Ionicons';
 import styles, { Colors } from '../../config/styles';
 import { Fonts } from '../../config/styles';
+import Divider from '../../components/Divider';
 const Session = ({
   item,
   navigation,
@@ -24,7 +26,7 @@ const Session = ({
 }) => {
   const { description, title, location, startTime, id } = item;
   return (
-    <View>
+    <ScrollView>
       <View style={{ padding: 20, fontFamily: Fonts.regular }}>
         <View
           style={{
@@ -50,7 +52,7 @@ const Session = ({
               })}
               size={15}
               color={Colors.red}
-              style={{ padding: 10 }}
+              style={{ paddingRight: 10, paddingLeft: 10 }}
             />
           )}
         </View>
@@ -105,6 +107,7 @@ const Session = ({
             </Text>
           </View>
         </TouchableHighlight>
+        <Divider />
         <View
           style={{
             width: '100%',
@@ -135,7 +138,8 @@ const Session = ({
                 width: '70%',
                 height: 45,
                 alignItems: 'center',
-                justifyContent: 'center'
+                justifyContent: 'center',
+                marginTop: 15
               }}
             >
               <Text
@@ -153,7 +157,7 @@ const Session = ({
           </TouchableOpacity>
         </View>
       </View>
-    </View>
+    </ScrollView>
   );
 };
 

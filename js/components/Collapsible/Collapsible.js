@@ -9,7 +9,7 @@ import {
   Animated
 } from 'react-native';
 import styles, { Colors, Fonts } from '../../config/styles';
-import Icon from 'react-native-vector-icons/Ionicons';
+
 class Collapsible extends Component {
   constructor(props) {
     super(props);

@@ -13,7 +13,7 @@ import { Colors } from '../../config/styles';
 import Icon from 'react-native-vector-icons/Ionicons';
 import styles from './styles';
 import { Fonts } from '../../config/styles';
-
+import Divider from '../Divider';
 const Events = ({ data, navigation, faveIds, saveFave, removeFave }) => {
   return (
     <SectionList
@@ -22,7 +22,9 @@ const Events = ({ data, navigation, faveIds, saveFave, removeFave }) => {
           activeOpacity={75 / 100}
           underlayColor={'rgb(210,210,210)'}
           onPress={() => {
-            navigation.navigate('Session', { item });
+            if (item.speaker && item.speaker.id) {
+              navigation.navigate('Session', { item });
+            }
           }}
         >
           <View style={{ paddingLeft: 15 }}>
@@ -83,16 +85,7 @@ const Events = ({ data, navigation, faveIds, saveFave, removeFave }) => {
         </View>
       )}
       sections={data}
-      ItemSeparatorComponent={() => (
-        <View
-          style={{
-            borderStyle: 'solid',
-            borderWidth: 0.5,
-            backgroundColor: '#e6e6e6',
-            color: '#e6e6e6'
-          }}
-        />
-      )}
+      ItemSeparatorComponent={() => <Divider />}
       keyExtractor={item => item.id}
     />
   );
