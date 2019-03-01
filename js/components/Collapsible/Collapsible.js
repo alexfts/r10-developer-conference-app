@@ -44,23 +44,25 @@ class Collapsible extends Component {
     };
     const { item } = this.props;
     return (
-      <View>
+      <View style={{ paddingTop: 10, paddingBottom: 10 }}>
         <TouchableOpacity
           onPress={this.handleToggleItem}
           style={{ flexDirection: 'row' }}
         >
-          <Animated.Text
-            style={[
-              {
-                ...styles.Paragraph,
-                fontFamily: Fonts.regular,
-                color: Colors.purple
-              },
-              animatedStyles
-            ]}
-          >
-            {`${this.state.opened ? '-' : '+'}`}
-          </Animated.Text>
+          <View>
+            <Animated.Text
+              style={[
+                {
+                  ...styles.Paragraph,
+                  fontFamily: Fonts.regular,
+                  color: Colors.purple
+                },
+                animatedStyles
+              ]}
+            >
+              {`${this.state.opened ? '-' : '+'}`}
+            </Animated.Text>
+          </View>
           <Text
             style={{
               ...styles.Paragraph,

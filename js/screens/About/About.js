@@ -9,6 +9,8 @@ import {
 } from 'react-native';
 import styles from '../../config/styles';
 import Collapsible from '../../components/Collapsible';
+import Divider from '../../components/Divider';
+
 class About extends Component {
   render() {
     const { data } = this.props;
@@ -24,14 +26,7 @@ class About extends Component {
               marginTop: 25
             }}
           />
-          <View
-            style={{
-              height: 1,
-              backgroundColor: '#e6e6e6',
-              marginVertical: 10,
-              width: '90%'
-            }}
-          />
+          <Divider />
           <View style={{ width: '100%' }}>
             <Text style={styles.Paragraph}>
               R10 is a conference that focuses on just about any topic related
@@ -54,6 +49,10 @@ class About extends Component {
               renderItem={({ item }) => <Collapsible item={item} />}
             />
           </View>
+          <Divider />
+          <Text style={{ ...styles.Paragraph, alignSelf: 'flex-start' }}>
+            © RED Academy 2019
+          </Text>
         </View>
       </ScrollView>
     );
