@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, StatusBar } from 'react-native';
 import client from './config/api';
 import { ApolloProvider } from 'react-apollo';
 import About from './screens/About';
@@ -11,6 +11,7 @@ import AppNavigator from '../js/navigation/RootStackNavigator.js';
 import { FavouritesProvider } from './context';
 export default class App extends Component {
   render() {
+    StatusBar.setBarStyle('light-content');
     return (
       <ApolloProvider client={client}>
         <FavouritesProvider>
