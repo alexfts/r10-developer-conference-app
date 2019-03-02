@@ -1,26 +1,14 @@
 import React, { Component } from 'react';
-import { View, Text, ActivityIndicator } from 'react-native';
+import { Text, ActivityIndicator } from 'react-native';
 import { Query } from 'react-apollo';
 import Faves from './Faves';
 import gql from 'graphql-tag';
 import FavouritesContext from '../../context';
-import Schedule from '../Schedule/Schedule';
-import { formatSessionData } from '../Schedule/dataFormatHelpers';
-import { Fonts } from '../../config/styles';
+import { formatSessionData } from '../../lib/dataFormatHelpers';
+import { getNavigationOptions } from '../../config/styles';
+
 export default class FavesContainer extends Component {
-  static navigationOptions = {
-    title: 'Faves',
-    headerTintColor: 'white',
-    headerTitleStyle: {
-      fontSize: 24,
-      fontFamily: Fonts.regular
-    },
-    headerTitleContainerStyle: {
-      display: 'flex',
-      justifyContent: 'center',
-      alignItems: 'center'
-    }
-  };
+  static navigationOptions = getNavigationOptions('Faves');
 
   render() {
     return (
@@ -48,12 +36,6 @@ export default class FavesContainer extends Component {
               if (error) return <Text>Error </Text>;
 
               return (
-                // <Schedule
-                //   data={formatSessionData(data.allSessions)}
-                //   faveIds={faveIds}
-                //   removeFave={removeFave}
-                //   saveFave={saveFave}
-                // />
                 <Faves
                   data={formatSessionData(data.allSessions)}
                   faveIds={faveIds}

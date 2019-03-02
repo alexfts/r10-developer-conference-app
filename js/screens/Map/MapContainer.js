@@ -1,46 +1,18 @@
 import React, { Component } from 'react';
-import { View, Text, ActivityIndicator } from 'react-native';
-import { Query } from 'react-apollo';
 import Map from './Map';
-import gql from 'graphql-tag';
-import { Fonts } from '../../config/styles';
+import { getNavigationOptions } from '../../config/styles';
 
 export default class MapContainer extends Component {
-  static navigationOptions = {
-    title: 'Map',
-    headerTintColor: 'white',
-    headerTitleStyle: {
-      fontSize: 24,
-      fontFamily: Fonts.regular
-    },
-    headerTitleContainerStyle: {
-      display: 'flex',
-      justifyContent: 'center',
-      alignItems: 'center'
-    }
-  };
+  static navigationOptions = getNavigationOptions('Map');
 
   render() {
     return (
-      <Query
-        query={gql`
-          {
-            allConducts {
-              id
-              title
-              description
-              order
-            }
-          }
-        `}
-      >
-        {({ loading, error, data }) => {
-          if (loading) return <ActivityIndicator />;
-          if (error) return <Text>Error </Text>;
-
-          if (!loading && !error) return <Map data={data} />;
-        }}
-      </Query>
+      <Map
+        latitude={49.263387}
+        longitude={-123.138176}
+        title={'RED Academy'}
+        description={'1490 W Broadway #200, Vancouver, BC V6H 4E8'}
+      />
     );
   }
 }

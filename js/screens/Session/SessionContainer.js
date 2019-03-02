@@ -1,24 +1,13 @@
 import React, { Component } from 'react';
-import { View, Text, ActivityIndicator, Linking, Platform } from 'react-native';
+import { Text, ActivityIndicator } from 'react-native';
 import { Query } from 'react-apollo';
 import Session from './Session';
+import { getNavigationOptions } from '../../config/styles';
 import gql from 'graphql-tag';
 import FavouritesContext from '../../context';
 
 export default class SessionContainer extends Component {
-  static navigationOptions = {
-    title: 'Session',
-    headerTintColor: 'white',
-    headerTitleStyle: {
-      fontSize: 24,
-      fontFamily: 'Montserrat'
-    },
-    headerTitleContainerStyle: {
-      display: 'flex',
-      justifyContent: 'center',
-      alignItems: 'center'
-    }
-  };
+  static navigationOptions = getNavigationOptions('Session');
 
   render() {
     const { navigation } = this.props;

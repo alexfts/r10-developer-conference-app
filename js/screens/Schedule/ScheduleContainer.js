@@ -1,25 +1,13 @@
 import React, { Component } from 'react';
-import { View, Text, ActivityIndicator } from 'react-native';
+import { Text, ActivityIndicator } from 'react-native';
 import { Query } from 'react-apollo';
 import Schedule from './Schedule';
 import gql from 'graphql-tag';
-import { formatSessionData } from './dataFormatHelpers';
+import { formatSessionData } from '../../lib/dataFormatHelpers';
 import FavouritesContext from '../../context';
-import { Fonts } from '../../config/styles';
+import { getNavigationOptions } from '../../config/styles';
 export default class ScheduleContainer extends Component {
-  static navigationOptions = {
-    title: 'Schedule',
-    headerTintColor: 'white',
-    headerTitleStyle: {
-      fontSize: 24,
-      fontFamily: Fonts.regular
-    },
-    headerTitleContainerStyle: {
-      display: 'flex',
-      justifyContent: 'center',
-      alignItems: 'center'
-    }
-  };
+  static navigationOptions = getNavigationOptions('Schedule');
 
   render() {
     return (

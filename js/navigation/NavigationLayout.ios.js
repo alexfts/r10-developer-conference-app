@@ -10,7 +10,7 @@ import SessionScreen from '../screens/Session';
 import MapScreen from '../screens/Map';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { sharedNavigationOptions } from './config';
-import { Fonts } from '../config/styles';
+import { NavigationOptions } from '../config/styles';
 
 const AboutStack = createStackNavigator(
   {
@@ -64,7 +64,7 @@ export default createBottomTabNavigator(
   },
   {
     defaultNavigationOptions: ({ navigation }) => ({
-      tabBarIcon: ({ focused, horizontal, tintColor }) => {
+      tabBarIcon: ({ tintColor }) => {
         const { routeName } = navigation.state;
         let iconName;
         if (routeName === 'About') {
@@ -79,16 +79,6 @@ export default createBottomTabNavigator(
         return <Ionicons name={iconName} size={25} color={tintColor} />;
       }
     }),
-    tabBarOptions: {
-      activeTintColor: '#fff',
-      inactiveTintColor: '#999999',
-      labelStyle: {
-        fontSize: 10,
-        fontFamily: Fonts.regular
-      },
-      style: {
-        backgroundColor: 'black'
-      }
-    }
+    tabBarOptions: NavigationOptions
   }
 );

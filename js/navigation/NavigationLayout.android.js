@@ -1,9 +1,5 @@
 import React from 'react';
-import {
-  createStackNavigator,
-  createBottomTabNavigator,
-  createDrawerNavigator
-} from 'react-navigation';
+import { createStackNavigator, createDrawerNavigator } from 'react-navigation';
 import AboutScreen from '../screens/About';
 import FavesScreen from '../screens/Faves';
 import ScheduleScreen from '../screens/Schedule';
@@ -11,7 +7,7 @@ import SessionScreen from '../screens/Session';
 import MapScreen from '../screens/Map';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { sharedNavigationOptions } from './config';
-import { Fonts } from '../config/styles';
+import { NavigationOptions } from '../config/styles';
 
 const AboutStack = createStackNavigator(
   {
@@ -65,7 +61,7 @@ export default createDrawerNavigator(
   },
   {
     defaultNavigationOptions: ({ navigation }) => ({
-      drawerIcon: ({ focused, horizontal, tintColor }) => {
+      drawerIcon: ({ tintColor }) => {
         const { routeName } = navigation.state;
         let iconName;
         if (routeName === 'About') {
@@ -80,17 +76,7 @@ export default createDrawerNavigator(
         return <Ionicons name={iconName} size={25} color={tintColor} />;
       }
     }),
-    drawerBackgroundColor: 'black',
-    contentOptions: {
-      activeTintColor: '#fff',
-      inactiveTintColor: '#999999',
-      labelStyle: {
-        fontSize: 20,
-        fontFamily: Fonts.regular
-      },
-      style: {
-        backgroundColor: 'black'
-      }
-    }
+    drawerBackgroundColor: '#000',
+    contentOptions: NavigationOptions
   }
 );

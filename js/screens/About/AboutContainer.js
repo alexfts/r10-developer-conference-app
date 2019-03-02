@@ -1,24 +1,12 @@
 import React, { Component } from 'react';
-import { View, Text, ActivityIndicator } from 'react-native';
+import { Text, ActivityIndicator } from 'react-native';
 import { Query } from 'react-apollo';
 import About from './About';
 import gql from 'graphql-tag';
-import { Fonts } from '../../config/styles';
+import { getNavigationOptions } from '../../config/styles';
 
 export default class AboutContainer extends Component {
-  static navigationOptions = {
-    title: 'About',
-    headerTintColor: 'white',
-    headerTitleStyle: {
-      fontSize: 24,
-      fontFamily: Fonts.regular
-    },
-    headerTitleContainerStyle: {
-      display: 'flex',
-      justifyContent: 'center',
-      alignItems: 'center'
-    }
-  };
+  static navigationOptions = getNavigationOptions('About');
 
   render() {
     return (

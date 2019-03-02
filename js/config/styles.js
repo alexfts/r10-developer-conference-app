@@ -1,4 +1,4 @@
-import { Platform, StyleSheet } from 'react-native';
+import { Platform } from 'react-native';
 
 export const Colors = {
   mgrey: '#999999',
@@ -28,7 +28,7 @@ export const Heading = {
 };
 
 export const Paragraph = {
-  fontFamily: 'Montserrat-Light',
+  fontFamily: Fonts.light,
   fontSize: 18,
   marginTop: 5,
   marginBottom: 5
@@ -38,6 +38,32 @@ export const Container = {
   alignItems: 'center',
   padding: 10
 };
+
+export const NavigationOptions = {
+  activeTintColor: '#fff',
+  inactiveTintColor: '#999999',
+  labelStyle: {
+    fontSize: Platform.OS === 'android' ? 20 : 10,
+    fontFamily: Fonts.regular
+  },
+  style: {
+    backgroundColor: '#000'
+  }
+};
+
+export const getNavigationOptions = title => ({
+  title,
+  headerTintColor: '#fff',
+  headerTitleStyle: {
+    fontSize: 24,
+    fontFamily: Fonts.regular
+  },
+  headerTitleContainerStyle: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center'
+  }
+});
 
 export default (styles = {
   Heading,
