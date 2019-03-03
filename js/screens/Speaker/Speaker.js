@@ -12,6 +12,8 @@ import { withNavigation } from 'react-navigation';
 import Icon from 'react-native-vector-icons/Ionicons';
 import styles, { Colors, Fonts } from '../../config/styles';
 import LinearGradient from 'react-native-linear-gradient';
+import UserAvatar from '../../components/UserAvatar';
+import GradientButton from '../../components/GradientButton';
 
 const Speaker = ({ navigation, speaker }) => {
   return (
@@ -60,24 +62,39 @@ const Speaker = ({ navigation, speaker }) => {
           borderRadius: 10
         }}
       >
-        <ScrollView contentContainerStyle={{ alignItems: 'center' }}>
-          <Image
+        <ScrollView
+          contentContainerStyle={{
+            alignItems: 'center',
+            marginTop: 20,
+            marginBottom: 15
+          }}
+        >
+          {/* <Image
             style={{ width: 100, height: 100, marginTop: 20 }}
             source={{ uri: speaker.image }}
             borderRadius={50}
-          />
+          /> */}
+          <UserAvatar size={100} uri={speaker.image} />
           <Text style={styles.Heading}>{speaker.name}</Text>
           <Text
-            style={{ ...styles.Paragraph, paddingLeft: 20, paddingRight: 20 }}
+            style={{
+              ...styles.Paragraph,
+              paddingLeft: 20,
+              paddingRight: 20,
+              marginBottom: 15
+            }}
           >
             {speaker.bio}
           </Text>
-          <TouchableOpacity
+          <GradientButton
+            handlePress={() => Linking.openURL(speaker.url)}
+            title="Read More on Wikipedia"
+          />
+          {/* <TouchableOpacity
             style={{
               width: '100%',
               alignItems: 'center',
-              justifyContent: 'center',
-              marginTop: 15
+              justifyContent: 'center'
             }}
             onPress={() => Linking.openURL(speaker.url)}
           >
@@ -90,8 +107,7 @@ const Speaker = ({ navigation, speaker }) => {
                 width: '70%',
                 height: 45,
                 alignItems: 'center',
-                justifyContent: 'center',
-                marginBottom: 15
+                justifyContent: 'center'
               }}
             >
               <Text
@@ -106,7 +122,7 @@ const Speaker = ({ navigation, speaker }) => {
                 Read More on Wikipedia
               </Text>
             </LinearGradient>
-          </TouchableOpacity>
+          </TouchableOpacity> */}
         </ScrollView>
       </View>
     </View>

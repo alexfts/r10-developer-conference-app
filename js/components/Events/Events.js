@@ -12,6 +12,7 @@ import { Colors } from '../../config/styles';
 import Icon from 'react-native-vector-icons/Ionicons';
 import eventsStyles from './styles';
 import Divider from '../Divider';
+import FaveIcon from '../FaveIcon';
 
 const Events = ({ data, navigation, faveIds }) => {
   return (
@@ -30,17 +31,7 @@ const Events = ({ data, navigation, faveIds }) => {
             <Text style={eventsStyles.title}>{item.title}</Text>
             <View style={eventsStyles.details}>
               <Text style={eventsStyles.location}>{item.location}</Text>
-              {item.id && faveIds.includes(item.id) && (
-                <Icon
-                  style={eventsStyles.heart}
-                  name={Platform.select({
-                    ios: 'ios-heart',
-                    android: 'md-heart'
-                  })}
-                  size={15}
-                  color={Colors.red}
-                />
-              )}
+              {item.id && faveIds.includes(item.id) && <FaveIcon />}
             </View>
           </View>
         </TouchableHighlight>

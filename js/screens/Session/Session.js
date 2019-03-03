@@ -12,11 +12,13 @@ import {
 import moment from 'moment';
 import LinearGradient from 'react-native-linear-gradient';
 import { withNavigation } from 'react-navigation';
-import Icon from 'react-native-vector-icons/Ionicons';
+
 import styles, { Colors } from '../../config/styles';
 import { Fonts } from '../../config/styles';
 import Divider from '../../components/Divider';
-
+import UserAvatar from '../../components/UserAvatar';
+import GradientButton from '../../components/GradientButton';
+import FaveIcon from '../../components/FaveIcon';
 const sessionStyles = StyleSheet.create({
   session: {
     padding: 20,
@@ -44,14 +46,13 @@ const sessionStyles = StyleSheet.create({
     color: Colors.mgrey
   },
   description: { ...styles.Paragraph, paddingTop: 20, paddingBottom: 20 },
-  speaker: { ...styles.Paragraph, fontFamily: Fonts.regular },
+  speaker: { ...styles.Paragraph, fontFamily: Fonts.regular, marginLeft: 15 },
   speakerInfo: {
     flexDirection: 'row',
     alignItems: 'center',
     marginTop: 15,
     marginBottom: 15
-  },
-  avatar: { width: 70, height: 70, marginRight: 15 }
+  }
 });
 
 const Session = ({
@@ -69,15 +70,16 @@ const Session = ({
         <View style={sessionStyles.header}>
           <Text style={sessionStyles.location}>{location}</Text>
           {id && faveIds.includes(id) && (
-            <Icon
-              name={Platform.select({
-                ios: 'ios-heart',
-                android: 'md-heart'
-              })}
-              size={15}
-              color={Colors.red}
-              style={sessionStyles.heart}
-            />
+            // <Icon
+            //   name={Platform.select({
+            //     ios: 'ios-heart',
+            //     android: 'md-heart'
+            //   })}
+            //   size={15}
+            //   color={Colors.red}
+            //   style={sessionStyles.heart}
+            // />
+            <FaveIcon />
           )}
         </View>
 
@@ -90,16 +92,18 @@ const Session = ({
         <Text style={styles.greyText}>Presented by:</Text>
         <TouchableHighlight
           activeOpacity={75 / 100}
+          underlayColor={Colors.lgrey}
           onPress={() => {
             navigation.navigate('Speaker', { speaker });
           }}
         >
           <View style={sessionStyles.speakerInfo}>
-            <Image
+            {/* <Image
               style={sessionStyles.avatar}
               source={{ uri: speaker.image }}
               borderRadius={35}
-            />
+            /> */}
+            <UserAvatar uri={speaker.image} size={70} />
             <Text style={sessionStyles.speaker}>{speaker.name}</Text>
           </View>
         </TouchableHighlight>
@@ -111,7 +115,7 @@ const Session = ({
             justifyContent: 'center'
           }}
         >
-          <TouchableOpacity
+          {/* <TouchableOpacity
             style={{
               width: '100%',
               alignItems: 'center',
@@ -150,7 +154,17 @@ const Session = ({
                 {faveIds.includes(id) ? 'Remove from Faves' : 'Add to Faves'}
               </Text>
             </LinearGradient>
-          </TouchableOpacity>
+          </TouchableOpacity> */}
+          <GradientButton
+            handlePress={() => {
+              if (faveIds.includes(id)) {
+                removeFave(id);
+              } else {
+                saveFave(id);
+              }
+            }}
+            title={faveIds.includes(id) ? 'Remove from Faves' : 'Add to Faves'}
+          />
         </View>
       </View>
     </ScrollView>
