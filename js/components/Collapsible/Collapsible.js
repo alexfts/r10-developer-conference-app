@@ -8,6 +8,7 @@ import {
 } from 'react-native';
 import styles from '../../config/styles';
 import collapsibleStyles from './styles';
+import PropTypes from 'prop-types';
 
 class Collapsible extends Component {
   constructor(props) {
@@ -68,4 +69,10 @@ class Collapsible extends Component {
   }
 }
 
+Collapsible.propTypes = {
+  item: PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired
+  }).isRequired
+};
 export default Collapsible;

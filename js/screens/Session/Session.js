@@ -8,6 +8,7 @@ import UserAvatar from '../../components/UserAvatar';
 import GradientButton from '../../components/GradientButton';
 import FaveIcon from '../../components/FaveIcon';
 import sessionStyles from './styles';
+import PropTypes from 'prop-types';
 
 const Session = ({
   item,
@@ -61,6 +62,24 @@ const Session = ({
       </View>
     </ScrollView>
   );
+};
+
+Session.propTypes = {
+  item: PropTypes.shape({
+    description: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    location: PropTypes.string.isRequired,
+    startTime: PropTypes.string.isRequired,
+    id: PropTypes.string.isRequired
+  }).isRequired,
+  navigation: PropTypes.object.isRequired,
+  speaker: PropTypes.shape({
+    image: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired
+  }).isRequired,
+  faveIds: PropTypes.arrayOf(PropTypes.string).isRequired,
+  removeFave: PropTypes.func.isRequired,
+  saveFave: PropTypes.func.isRequired
 };
 
 export default withNavigation(Session);

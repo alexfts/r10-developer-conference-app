@@ -6,6 +6,7 @@ import { Colors } from '../../config/styles';
 import eventsStyles from './styles';
 import Divider from '../Divider';
 import FaveIcon from '../FaveIcon';
+import PropTypes from 'prop-types';
 
 const Events = ({ data, navigation, faveIds }) => {
   return (
@@ -41,6 +42,19 @@ const Events = ({ data, navigation, faveIds }) => {
       keyExtractor={item => item.id}
     />
   );
+};
+
+Events.propTypes = {
+  data: PropTypes.arrayOf(
+    PropTypes.shape({
+      title: PropTypes.string,
+      location: PropTypes.string,
+      id: PropTypes.string,
+      speaker: PropTypes.object
+    })
+  ).isRequired,
+  navigation: PropTypes.object.isRequired,
+  faveIds: PropTypes.arrayOf(PropTypes.string).isRequired
 };
 
 export default withNavigation(Events);

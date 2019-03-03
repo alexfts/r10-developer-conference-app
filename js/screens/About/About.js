@@ -4,6 +4,7 @@ import styles from '../../config/styles';
 import aboutStyles from './styles';
 import Collapsible from '../../components/Collapsible';
 import Divider from '../../components/Divider';
+import PropTypes from 'prop-types';
 
 const About = ({ data }) => (
   <ScrollView>
@@ -39,5 +40,11 @@ const About = ({ data }) => (
     </View>
   </ScrollView>
 );
+
+About.propTypes = {
+  data: PropTypes.shape({
+    allConducts: PropTypes.arrayOf(PropTypes.object).isRequired
+  })
+};
 
 export default About;

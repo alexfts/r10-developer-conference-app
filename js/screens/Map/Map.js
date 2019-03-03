@@ -1,8 +1,9 @@
 import React from 'react';
 import MapView, { Marker } from 'react-native-maps';
 import styles from './styles';
+import PropTypes from 'prop-types';
 
-export default ({ latitude, longitude, title, description }) => (
+const Map = ({ latitude, longitude, title, description }) => (
   <MapView
     style={styles.map}
     region={{
@@ -20,3 +21,12 @@ export default ({ latitude, longitude, title, description }) => (
     />
   </MapView>
 );
+
+Map.propTypes = {
+  latitude: PropTypes.number.isRequired,
+  longitude: PropTypes.number.isRequired,
+  title: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired
+};
+
+export default Map;

@@ -12,6 +12,7 @@ import styles from '../../config/styles';
 import UserAvatar from '../../components/UserAvatar';
 import GradientButton from '../../components/GradientButton';
 import speakerStyles from './styles';
+import PropTypes from 'prop-types';
 
 const Speaker = ({ navigation, speaker }) => (
   <View style={speakerStyles.modal}>
@@ -41,5 +42,15 @@ const Speaker = ({ navigation, speaker }) => (
     </View>
   </View>
 );
+
+Speaker.propTypes = {
+  navigation: PropTypes.object.isRequired,
+  speaker: PropTypes.shape({
+    image: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    bio: PropTypes.string.isRequired,
+    url: PropTypes.string.isRequired
+  }).isRequired
+};
 
 export default withNavigation(Speaker);

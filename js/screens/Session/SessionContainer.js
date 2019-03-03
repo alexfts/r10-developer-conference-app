@@ -5,8 +5,9 @@ import Session from './Session';
 import { getNavigationOptions } from '../../config/styles';
 import gql from 'graphql-tag';
 import FavouritesContext from '../../context';
+import PropTypes from 'prop-types';
 
-export default class SessionContainer extends Component {
+class SessionContainer extends Component {
   static navigationOptions = getNavigationOptions('Session');
 
   render() {
@@ -51,3 +52,9 @@ export default class SessionContainer extends Component {
     );
   }
 }
+
+SessionContainer.propTypes = {
+  navigation: PropTypes.object.isRequired
+};
+
+export default SessionContainer;

@@ -2,8 +2,9 @@ import React from 'react';
 import { Colors } from '../../config/styles';
 import LinearGradient from 'react-native-linear-gradient';
 import { Text, TouchableOpacity } from 'react-native';
+import PropTypes from 'prop-types';
 
-export default ({ title, handlePress }) => (
+const GradientButton = ({ title, handlePress }) => (
   <TouchableOpacity
     style={{
       width: '100%',
@@ -39,3 +40,10 @@ export default ({ title, handlePress }) => (
     </LinearGradient>
   </TouchableOpacity>
 );
+
+GradientButton.propTypes = {
+  title: PropTypes.string.isRequired,
+  handlePress: PropTypes.func.isRequired
+};
+
+export default GradientButton;
