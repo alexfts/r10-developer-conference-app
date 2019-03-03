@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import {
   Text,
   View,
@@ -16,6 +16,44 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import styles, { Colors } from '../../config/styles';
 import { Fonts } from '../../config/styles';
 import Divider from '../../components/Divider';
+
+const sessionStyles = StyleSheet.create({
+  session: {
+    padding: 20,
+    fontFamily: Fonts.regular
+  },
+  header: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center'
+  },
+  location: {
+    fontSize: 18,
+    color: '#999999',
+    fontFamily: Fonts.light
+  },
+  heart: { paddingRight: 10, paddingLeft: 10 },
+  time: {
+    fontSize: 18,
+    fontFamily: Fonts.regular,
+    color: Colors.red
+  },
+  greyText: {
+    fontSize: 16,
+    fontFamily: Fonts.regular,
+    color: Colors.mgrey
+  },
+  description: { ...styles.Paragraph, paddingTop: 20, paddingBottom: 20 },
+  speaker: { ...styles.Paragraph, fontFamily: Fonts.regular },
+  speakerInfo: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginTop: 15,
+    marginBottom: 15
+  },
+  avatar: { width: 70, height: 70, marginRight: 15 }
+});
+
 const Session = ({
   item,
   navigation,
@@ -27,23 +65,9 @@ const Session = ({
   const { description, title, location, startTime, id } = item;
   return (
     <ScrollView>
-      <View style={{ padding: 20, fontFamily: Fonts.regular }}>
-        <View
-          style={{
-            flexDirection: 'row',
-            justifyContent: 'space-between',
-            alignItems: 'center'
-          }}
-        >
-          <Text
-            style={{
-              fontSize: 18,
-              color: '#999999',
-              fontFamily: Fonts.light
-            }}
-          >
-            {location}
-          </Text>
+      <View style={sessionStyles.session}>
+        <View style={sessionStyles.header}>
+          <Text style={sessionStyles.location}>{location}</Text>
           {id && faveIds.includes(id) && (
             <Icon
               name={Platform.select({
@@ -52,59 +76,31 @@ const Session = ({
               })}
               size={15}
               color={Colors.red}
-              style={{ paddingRight: 10, paddingLeft: 10 }}
+              style={sessionStyles.heart}
             />
           )}
         </View>
 
         <Text style={styles.Heading}>{title}</Text>
-        <Text
-          style={{
-            fontSize: 18,
-            fontFamily: Fonts.regular,
-            color: Colors.red
-          }}
-        >
+        <Text style={sessionStyles.time}>
           {moment(startTime).format('h:mm A')}
         </Text>
 
-        <Text
-          style={{ ...styles.Paragraph, paddingTop: 20, paddingBottom: 20 }}
-        >
-          {description}
-        </Text>
-        <Text
-          style={{
-            fontSize: 16,
-            fontFamily: Fonts.regular,
-            color: Colors.mgrey
-          }}
-        >
-          Presented by:
-        </Text>
+        <Text style={styles.description}>{description}</Text>
+        <Text style={styles.greyText}>Presented by:</Text>
         <TouchableHighlight
           activeOpacity={75 / 100}
-          underlayColor={'rgb(210,210,210)'}
           onPress={() => {
             navigation.navigate('Speaker', { speaker });
           }}
         >
-          <View
-            style={{
-              flexDirection: 'row',
-              alignItems: 'center',
-              marginTop: 15,
-              marginBottom: 15
-            }}
-          >
+          <View style={sessionStyles.speakerInfo}>
             <Image
-              style={{ width: 70, height: 70, marginRight: 15 }}
+              style={sessionStyles.avatar}
               source={{ uri: speaker.image }}
               borderRadius={35}
             />
-            <Text style={{ ...styles.Paragraph, fontFamily: Fonts.regular }}>
-              {speaker.name}
-            </Text>
+            <Text style={sessionStyles.speaker}>{speaker.name}</Text>
           </View>
         </TouchableHighlight>
         <Divider />

@@ -1,9 +1,8 @@
-import React, { Component } from 'react';
+import React from 'react';
 import {
   Text,
   Platform,
   View,
-  FlatList,
   SectionList,
   TouchableHighlight
 } from 'react-native';
@@ -11,53 +10,29 @@ import moment from 'moment';
 import { withNavigation } from 'react-navigation';
 import { Colors } from '../../config/styles';
 import Icon from 'react-native-vector-icons/Ionicons';
-import styles from './styles';
-import { Fonts } from '../../config/styles';
+import eventsStyles from './styles';
 import Divider from '../Divider';
-const Events = ({ data, navigation, faveIds, saveFave, removeFave }) => {
+
+const Events = ({ data, navigation, faveIds }) => {
   return (
     <SectionList
       renderItem={({ item }) => (
         <TouchableHighlight
           activeOpacity={75 / 100}
-          underlayColor={'rgb(210,210,210)'}
+          underlayColor={Colors.lgrey}
           onPress={() => {
             if (item.speaker && item.speaker.id) {
               navigation.navigate('Session', { item });
             }
           }}
         >
-          <View style={{ paddingLeft: 15 }}>
-            <Text
-              style={{
-                fontSize: 16,
-                fontFamily: Fonts.regular,
-                marginTop: 16
-              }}
-            >
-              {item.title}
-            </Text>
-            <View
-              style={{
-                flexDirection: 'row',
-                justifyContent: 'space-between',
-                alignItems: 'center'
-              }}
-            >
-              <Text
-                style={{
-                  fontSize: 14,
-                  color: '#999999',
-                  fontFamily: 'Montserrat-Light',
-                  marginTop: 10,
-                  marginBottom: 10
-                }}
-              >
-                {item.location}
-              </Text>
+          <View style={eventsStyles.sessionLink}>
+            <Text style={eventsStyles.title}>{item.title}</Text>
+            <View style={eventsStyles.details}>
+              <Text style={eventsStyles.location}>{item.location}</Text>
               {item.id && faveIds.includes(item.id) && (
                 <Icon
-                  style={styles.heart}
+                  style={eventsStyles.heart}
                   name={Platform.select({
                     ios: 'ios-heart',
                     android: 'md-heart'
@@ -71,15 +46,8 @@ const Events = ({ data, navigation, faveIds, saveFave, removeFave }) => {
         </TouchableHighlight>
       )}
       renderSectionHeader={({ section }) => (
-        <View style={{ backgroundColor: '#e6e6e6' }}>
-          <Text
-            style={{
-              fontSize: 16,
-              fontFamily: Fonts.regular,
-              padding: 5,
-              paddingLeft: 15
-            }}
-          >
+        <View style={eventsStyles.header}>
+          <Text style={eventsStyles.time}>
             {moment(section.title).format('h:mm A')}
           </Text>
         </View>

@@ -2,13 +2,12 @@ import React, { Component } from 'react';
 import {
   Text,
   View,
-  FlatList,
-  Image,
   TouchableOpacity,
   LayoutAnimation,
   Animated
 } from 'react-native';
-import styles, { Colors, Fonts } from '../../config/styles';
+import styles from '../../config/styles';
+import collapsibleStyles from './styles';
 
 class Collapsible extends Component {
   constructor(props) {
@@ -43,33 +42,21 @@ class Collapsible extends Component {
       transform: [{ rotate: spinDegree }]
     };
     const { item } = this.props;
+
     return (
-      <View style={{ paddingTop: 10, paddingBottom: 10 }}>
+      <View style={collapsibleStyles.container}>
         <TouchableOpacity
           onPress={this.handleToggleItem}
-          style={{ flexDirection: 'row' }}
+          style={collapsibleStyles.touchable}
         >
           <View>
             <Animated.Text
-              style={[
-                {
-                  ...styles.Paragraph,
-                  fontFamily: Fonts.regular,
-                  color: Colors.purple
-                },
-                animatedStyles
-              ]}
+              style={[collapsibleStyles.touchableText, animatedStyles]}
             >
               {`${this.state.opened ? '-' : '+'}`}
             </Animated.Text>
           </View>
-          <Text
-            style={{
-              ...styles.Paragraph,
-              fontFamily: Fonts.regular,
-              color: Colors.purple
-            }}
-          >
+          <Text style={collapsibleStyles.touchableText}>
             {` ${item.title}`}
           </Text>
         </TouchableOpacity>
