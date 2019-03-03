@@ -1,15 +1,8 @@
 import React from 'react';
-import {
-  Text,
-  Platform,
-  View,
-  SectionList,
-  TouchableHighlight
-} from 'react-native';
+import { Text, View, SectionList, TouchableHighlight } from 'react-native';
 import moment from 'moment';
 import { withNavigation } from 'react-navigation';
 import { Colors } from '../../config/styles';
-import Icon from 'react-native-vector-icons/Ionicons';
 import eventsStyles from './styles';
 import Divider from '../Divider';
 import FaveIcon from '../FaveIcon';

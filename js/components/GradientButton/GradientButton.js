@@ -1,9 +1,9 @@
 import React from 'react';
-import styles, { Colors } from '../../config/styles';
-import { Fonts } from '../../config/styles';
+import { Colors } from '../../config/styles';
 import LinearGradient from 'react-native-linear-gradient';
 import { Text, TouchableOpacity } from 'react-native';
-export default ({ title, width, handlePress }) => (
+
+export default ({ title, handlePress }) => (
   <TouchableOpacity
     style={{
       width: '100%',

@@ -1,9 +1,8 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Speaker from './Speaker';
 
-export default class SpeakerContainer extends Component {
-  render() {
-    const { navigation } = this.props;
-    return <Speaker speaker={navigation.getParam('speaker')} />;
-  }
-}
+const SpeakerContainer = ({ navigation }) => (
+  <Speaker speaker={navigation.getParam('speaker')} />
+);
+
+export default SpeakerContainer;

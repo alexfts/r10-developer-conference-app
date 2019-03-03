@@ -14,7 +14,7 @@ const About = ({ data }) => (
       />
       <Divider />
       <View style={aboutStyles.r10Description}>
-        <Text style={styles.Paragraph}>
+        <Text style={aboutStyles.Paragraph}>
           R10 is a conference that focuses on just about any topic related to
           dev.
         </Text>

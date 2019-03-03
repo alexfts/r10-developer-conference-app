@@ -8,7 +8,7 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 16,
     fontFamily: Fonts.regular,
-    marginTop: 16
+    marginTop: 8
   },
   details: {
     flexDirection: 'row',

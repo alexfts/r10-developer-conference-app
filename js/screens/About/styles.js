@@ -8,5 +8,6 @@ export default StyleSheet.create({
   },
   r10Description: { width: '100%' },
   codeOfConduct: { backgroundColor: '#fff' },
-  footer: { ...styles.Paragraph, alignSelf: 'flex-start' }
+  footer: { ...styles.Paragraph, alignSelf: 'flex-start', marginTop: 10 },
+  Paragraph: { ...styles.Paragraph, marginTop: 10 }
 });
