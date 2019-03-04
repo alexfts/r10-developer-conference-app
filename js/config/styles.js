@@ -5,7 +5,8 @@ export const Colors = {
   lgrey: '#e6e6e6',
   blue: '#8797D6',
   purple: '#9963ea',
-  red: '#cf392a'
+  red: '#cf392a',
+  white: '#fff'
 };
 
 export const Fonts = {
@@ -51,19 +52,26 @@ export const NavigationOptions = {
   }
 };
 
-export const getNavigationOptions = title => ({
-  title,
-  headerTintColor: '#fff',
-  headerTitleStyle: {
-    fontSize: 24,
-    fontFamily: Fonts.regular
-  },
-  headerTitleContainerStyle: {
+export const getNavigationOptions = title => {
+  const result = {
+    title,
+    headerTintColor: '#fff',
+    headerTitleStyle: {
+      fontSize: 24,
+      fontFamily: Fonts.regular
+    }
+  };
+  const iosOptions = {
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center'
-  }
-});
+  };
+
+  return Platform.select({
+    ios: { ...result, headerTitleContainerStyle: iosOptions },
+    android: result
+  });
+};
 
 export default (styles = {
   Heading,

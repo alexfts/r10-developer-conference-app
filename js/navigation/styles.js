@@ -5,5 +5,5 @@ export default StyleSheet.create({
     overflow: 'hidden'
   },
   gradient: { height: '100%', width: '100%' },
-  androidMenu: { paddingLeft: 10, paddingTop: 10, width: 40 }
+  androidMenu: { marginLeft: 15, marginTop: 10, marginBottom: 6 }
 });

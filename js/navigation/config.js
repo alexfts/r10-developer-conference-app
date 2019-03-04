@@ -1,4 +1,4 @@
-import { StyleSheet, View, TouchableHighlight, Platform } from 'react-native';
+import { StyleSheet, View, Platform } from 'react-native';
 import React from 'react';
 import { Header } from 'react-navigation';
 import LinearGradient from 'react-native-linear-gradient';
@@ -14,17 +14,6 @@ const GradientHeader = props => (
       end={{ x: 1.0, y: 0.0 }}
       style={[StyleSheet.absoluteFill, styles.gradient]}
     />
-    {Platform.OS === 'android' && (
-      <TouchableHighlight
-        style={styles.androidMenu}
-        activeOpacity={75 / 100}
-        onPress={() => {
-          props.navigation.toggleDrawer();
-        }}
-      >
-        <Icon name="md-menu" size={40} color="#fff" />
-      </TouchableHighlight>
-    )}
     <Header {...props} />
   </View>
 );
@@ -37,5 +26,25 @@ export const sharedNavigationOptions = navigation => {
       backgroundColor: 'transparent'
     }
   };
-  return Platform.OS === 'android' ? { ...result, headerLeft: null } : result;
+  const isSession = navigation.state.routeName === 'Session';
+  return Platform.OS === 'android'
+    ? {
+        ...result,
+        headerLeft: () => (
+          <Icon
+            name={isSession ? 'md-arrow-back' : 'md-menu'}
+            size={30}
+            color={Colors.white}
+            style={styles.androidMenu}
+            onPress={() => {
+              if (isSession) {
+                navigation.goBack();
+              } else {
+                navigation.toggleDrawer();
+              }
+            }}
+          />
+        )
+      }
+    : result;
 };
