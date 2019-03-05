@@ -3,7 +3,9 @@
 R10 is an iOS and Android app built in React Native. It allows a conference attendee to view the conference schedule, see the details for each session, find out information about each speaker, add sessions to favourites, and view the conference's location on the map.
 
 Note that while iOS is using a TabNavigator, Android is using a Drawer for navigation:
+<br>
 <img src="/js/assets/images/screenshot_ios.png" alt="iOS screenshot" height="300px">
+<br>
 <img src="/js/assets/images/screenshot_android.png" alt="Android screenshot" height="300px">
 
 ### Technologies Used
