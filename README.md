@@ -6,11 +6,11 @@ R10 is an iOS and Android app built in React Native. It allows a conference atte
 
 Note that while iOS is using a TabNavigator, Android is using a Drawer for navigation:
 
----
-
 <br>
-<img src="/js/assets/images/screenshot_ios.png" alt="iOS screenshot" height="500px">
-<img src="/js/assets/images/screenshot_android.png" alt="Android screenshot" height="500px">
+<img src="/js/assets/images/screenshot_ios.png" alt="iOS screenshot" height="400px">
+<img src="/js/assets/images/screenshot_android.png" alt="Android screenshot" height="400px">
+
+---
 
 ## Technologies Used
 
